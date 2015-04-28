@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Display: Know your display features</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h3>Device width:</h3>
+	<p id="deviceWidth"></p>
+
+	<h3>Device height:</h3>
+	<p id="deviceHeight"></p>
+
+	<h3>Device pixel reatio:</h3>
+	<p id="devicePixelRatio"></p>
+
+	<script type="text/javascript" src="my-display.js"></script>
+	<script>
+		function printInfo(){
+			myDisplay.printDisplayInfo('getDeviceWidth', 'deviceWidth');
+			myDisplay.printDisplayInfo('getDeviceHeight', 'deviceHeight');
+			myDisplay.printDisplayInfo('getDevicePixelRatio', 'devicePixelRatio');
+		}
+		printInfo();
+
+		window.onresize = printInfo;
+	</script>
+</body>
+</html>
