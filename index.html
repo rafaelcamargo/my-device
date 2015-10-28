@@ -25,11 +25,11 @@
     </li>
   </ul>
 
-  <!-- Fonts -->
+  <!-- System Fonts -->
   <ul>
     <li>
-      <h1>Fonts</h1>
-      <ul>
+      <h1>System Fonts</h1>
+      <ul id="fontFaceListContainer">
         <li style="font-family:'Helvetica',monospace">Helvetica</li>
         <li style="font-family:'Lucida Grande',monospace">Lucida Grande</li>
         <li style="font-family:'Verdana',monospace">Verdana</li>
@@ -37,6 +37,7 @@
         <li style="font-family:'Georgia',monospace">Georgia</li>
         <li style="font-family:'Times New Roman',monospace">Times New Roman</li>
         <li style="font-family:'Courier New',monospace">Courier New</li>
+        <li style="font-family:'TheresNoFont',monospace">Roboto</li>
       </ul>
       <p style="font-family:monospace">Missing fonts will be like this (monospace)</p>
     </li>
@@ -44,14 +45,20 @@
 
   <script type="text/javascript" src="my-display.js"></script>
   <script>
-    function printInfo(){
-      myDisplay.printDisplayInfo('getDeviceWidth', 'deviceWidth');
-      myDisplay.printDisplayInfo('getDeviceHeight', 'deviceHeight');
-      myDisplay.printDisplayInfo('getDevicePixelRatio', 'devicePixelRatio');
-    }
-    printInfo();
+    (function(win, myDisplay){
+      var fontFaceListContainer = document.getElementById('fontFaceList');
 
-    window.onresize = printInfo;
+      function printInfo(){
+        myDisplay.printDisplayInfo('getDeviceWidth', 'deviceWidth');
+        myDisplay.printDisplayInfo('getDeviceHeight', 'deviceHeight');
+        myDisplay.printDisplayInfo('getDevicePixelRatio', 'devicePixelRatio');
+      }
+
+      printInfo();
+      myDisplay.identifyMissingSystemFonts(fontFaceListContainer);
+
+      window.onresize = printInfo;
+    })(window, myDisplay);
   </script>
 </body>
 </html>
